@@ -9,7 +9,7 @@ const movies = [
 ];
 const items = [
   { id: 1, itemName: 'Spoon', color: 'Silver', quantity: 8},
- { id: 2, itemName: 'Fork', color: 'Silver', quantity: 8 }
+  { id: 2, itemName: 'Fork', color: 'Silver', quantity: 8 }
 ];
 
 app.get('/',(req, res)=>{
