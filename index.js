@@ -47,8 +47,8 @@ app.post('/items',(req,res)=>{
         res.status(201).json({message:"Item added succesfully....", items:newItem})
     }
 })
-const PORT = process.env.PORT || 3000;  
+const PORT = process.env.PORT || 5000;  
+
 app.listen(PORT, ()=>{
     console.log("Server running succesfully for this....");
-    
-})
+}) 
