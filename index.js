@@ -83,6 +83,42 @@ app.post('/items',(req,res)=>{
         res.status(201).json({message:"Item added succesfully....", items:newItem})
     }
 })
+
+app.post('/movies/:id',(req,res)=>{
+    const id = parseInt(req.params.id);
+    const updatedMovies = req.body;
+
+    const movieToUpdate = movies.find(a=>a.id==id);
+
+    if(!movieToUpdate){
+        res.status(404).json({error:"Movie not found!!"})
+    }else{
+        if(!updatedMovies.title || !updatedMovies.director || !updatedMovies.year){
+            res.status(400).json({error:"Title, director and year are required field.."})
+        }else{
+            Object.assign(movieToUpdate,updatedMovies);
+            res.status(200).json({message:"Succesfull updation!!",movies:updatedMovies})
+        }
+    }
+})
+
+app.post('/items/:id',(req,res)=>{
+    const id = parseInt(req.params.id);
+    const updatedItem = req.body;
+
+    const itemToUpdate = items.find(a=>a.id==id);
+
+    if(!itemToUpdate){
+        res.status(404).json({error:"Items not found!!"})
+    }else{
+        if(!updatedItem.itemName || !updatedItem.color || !updatedItem.quantity){
+            res.status(400).json({error:"Fill all required field.."})
+        }else{
+            Object.assign(itemToUpdate,updatedItem);
+            res.status(200).json({message:"Succesfull updation!!",items:updatedItem})
+        }
+    }
+})
 const PORT = process.env.PORT || 5000;  
 
 app.listen(PORT, ()=>{
